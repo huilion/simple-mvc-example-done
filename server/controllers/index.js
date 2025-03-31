@@ -316,7 +316,6 @@ const createDog = async (req, res) => {
 
 const findAndIncreaseAge = async (req, res) => {
   try {
-    console.log(req.body.name);
 
     const update = await Dog.findOneAndUpdate(
       { name: req.body.name },
@@ -326,8 +325,6 @@ const findAndIncreaseAge = async (req, res) => {
         sort: { createdDated: 'descending' },
       },
     ).lean().exec();
-
-    console.log(update.name);
 
     return res.json({
       name: update.name,
